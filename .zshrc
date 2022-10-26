@@ -34,6 +34,7 @@ plugins=( zsh-autosuggestions )
   alias g="git"
   alias gs="git status"
   alias gl="git log --oneline"
+	alias gb="git for-each-ref --sort=committerdate refs/heads/ --format='%(committerdate:short) %(refname:short)'"
   alias yank="git pull"
   alias yeet="git push"
 	#Tmux
