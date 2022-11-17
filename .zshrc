@@ -30,13 +30,20 @@ plugins=( zsh-autosuggestions )
   	alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 		# Search with fzf and open in nvim
 		alias ff="fd --type f --hidden --exclude .git | fzf | xargs nvim"
+		# Use bat instead of cat
+		alias cat="bat"
+		# Custom cht.sh tool
+		alias cht="bash ~/.scripts/cht.sh"
   # Git
   alias g="git"
   alias gs="git status"
   alias gl="git log --oneline"
 	alias gb="git for-each-ref --sort=committerdate refs/heads/ --format='%(committerdate:short) %(refname:short)'"
+	alias gd="git diff"
   alias yank="git pull"
   alias yeet="git push"
+	# Github CLI
+	alias dash="gh dash"
 	#Tmux
 	alias tkill="tmux kill-server"
 	#.dotfiles
@@ -63,6 +70,12 @@ autoload -U promptinit; promptinit
 prompt pure
 
 source $ZSH/oh-my-zsh.sh
+
+# fzf catppuccin
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
 # bun completions
 [ -s "/Users/stordahl/.bun/_bun" ] && source "/Users/stordahl/.bun/_bun"
