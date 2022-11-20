@@ -40,6 +40,7 @@ plugins=( zsh-autosuggestions )
   alias gl="git log --oneline"
 	alias gb="git for-each-ref --sort=committerdate refs/heads/ --format='%(committerdate:short) %(refname:short)'"
 	alias gd="git diff"
+	alias gc="bash ~/.scripts/conv_commits.sh"
   alias yank="git pull"
   alias yeet="git push"
 	# Github CLI
@@ -64,6 +65,9 @@ plugins=( zsh-autosuggestions )
   alias styapi="cd ~/code/stylitics/clj-widget-api"
   alias styapitest="styapi && lein test"
   alias styapidev="styapi && lein run dev"
+	
+	# Check Client stock prices
+	alias styticker="ticker -w ANF,CHMP,KSS,M,NKE,PUMSY,TPR,WMT"
   # End Stylitics
 
 autoload -U promptinit; promptinit
