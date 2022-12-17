@@ -1,3 +1,5 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -29,7 +31,9 @@ plugins=( zsh-autosuggestions )
 		# Print File Tree 
   	alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 		# Search with fzf and open in nvim
-		alias ff="fd --type f --hidden --exclude .git | fzf | xargs nvim"
+		alias ff="fd --type f --hidden --exclude .git | fzf --preview 'bat --color=always {1}' | xargs nvim"
+		# Copy line of code to clipboard
+		alias copy="ag . | fzf --delimiter ':' --preview 'bat --color=always --highlight-line {2} {1}' | awk -F ':' '{ print $3}' | sed 's/^\s+//' | pbcopy"
 		# Use bat instead of cat
 		alias cat="bat"
 		# Custom cht.sh tool
@@ -88,3 +92,6 @@ export FZF_DEFAULT_OPTS=" \
 export BUN_INSTALL="/Users/stordahl/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH=/opt/homebrew/bin:$PATH
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
