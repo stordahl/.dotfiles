@@ -41,10 +41,11 @@ plugins=( zsh-autosuggestions )
   # Git
   alias g="git"
   alias gs="git status"
+	alias gc="git add . && git commit -m"
   alias gl="git log --oneline"
 	alias gb="git for-each-ref --sort=committerdate refs/heads/ --format='%(committerdate:short) %(refname:short)'"
 	alias gd="git diff"
-	alias gc="bash ~/.scripts/conv_commits.sh"
+	alias gcc="bash ~/.scripts/conv_commits.sh"
   alias yank="git pull"
   alias yeet="git push"
 	# Github CLI
