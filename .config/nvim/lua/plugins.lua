@@ -36,6 +36,27 @@ return require('packer').startup(function (use)
 		}
 	}
 
+  -- LuaSnip
+  use({"L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*"})
+  use { 'hrsh7th/nvim-cmp',
+    config = function ()
+      require'cmp'.setup {
+        snippet = {
+          expand = function(args)
+            require'luasnip'.lsp_expand(args.body)
+          end
+        },
+        sources = {
+          { name = 'luasnip' },
+          { name = 'nvim_lsp' }
+        },
+      }
+    end
+  }
+  use "saadparwaiz1/cmp_luasnip"
+  use "rafamadriz/friendly-snippets"
+  use "stordahl/sveltekit-snippets"
+
   -- Catppuccino
   use { "catppuccin/nvim", as = "catppuccin" } 
 

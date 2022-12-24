@@ -194,3 +194,9 @@ require("neo-tree").setup({
           }
         }
       })
+
+vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>Neotree toggle<cr>", options)
+vim.api.nvim_set_keymap("n", "<leader>o", "<cmd>Neotree focus<cr>", options)
+vim.api.nvim_set_keymap("n", "<esc>", "<cmd>Neotree close<cr>", options)
+vim.api.nvim_set_keymap("n", "<leader>gs", "<cmd>Neotree float git_status<cr>", options)
+
