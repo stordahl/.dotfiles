@@ -59,6 +59,8 @@ return require('packer').startup(function (use)
   use "rafamadriz/friendly-snippets"
   use "stordahl/sveltekit-snippets"
 
+  use "rcarriga/nvim-notify"
+
   -- Catppuccino
   use { "catppuccin/nvim", as = "catppuccin" } 
 
