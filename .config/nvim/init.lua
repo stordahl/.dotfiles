@@ -19,5 +19,3 @@ vim.wo.number = true
 vim.o.clipboard = "unnamedplus"
 --Term GUI Colors
 vim.o.termguicolors = true
-
-

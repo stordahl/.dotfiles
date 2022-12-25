@@ -47,13 +47,15 @@ return require('packer').startup(function (use)
           end
         },
         sources = {
+          { name = 'nvim_lsp' },
           { name = 'luasnip' },
-          { name = 'nvim_lsp' }
+          { name = 'buffer' },
         },
       }
     end
   }
   use "saadparwaiz1/cmp_luasnip"
+  use "hrsh7th/cmp-nvim-lsp"
   use "rafamadriz/friendly-snippets"
   use "stordahl/sveltekit-snippets"
 
