@@ -30,8 +30,10 @@ alias kill8080="kill -9 $(lsof -t -i:'8080')"
 alias kill3000="kill -9 $(lsof -t -i:'3000')"
 
 # Utils
-    # Print File Tree 
-    alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+  # MPLS Weather
+  alias weather="curl -4 http://wttr.in/Minneapolis"
+  # Print File Tree 
+  alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 	# Search with fzf and open in nvim
 	alias ff="fd --type f --hidden --exclude .git | fzf --preview 'bat --color=always {1}' | xargs nvim"
 	# Copy line of code to clipboard
