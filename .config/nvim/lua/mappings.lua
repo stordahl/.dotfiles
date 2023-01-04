@@ -2,6 +2,8 @@
 options = { noremap = true }
 
 -- Basics
+-- Escape with JK
+vim.api.nvim_set_keymap("i", "jk", "<ESC>", options)
 -- Leader Key
 vim.g.mapleader = " "
 -- Switch Windows

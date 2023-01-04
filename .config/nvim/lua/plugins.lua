@@ -73,6 +73,11 @@ return require('packer').startup(function (use)
   -- Git signs
   use 'lewis6991/gitsigns.nvim'
 
+  use {
+    'ldelossa/gh.nvim',
+    requires = { { 'ldelossa/litee.nvim' } }
+  }
+
   -- Harpoon
   use 'ThePrimeagen/harpoon'
 
