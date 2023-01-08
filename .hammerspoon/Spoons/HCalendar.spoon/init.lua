@@ -18,6 +18,11 @@ obj.hcalw = 31*24+20
 obj.hcalh = 100
 obj.midlinecolor = {red=1, blue=1, gree=1, alpha=0.5}
 
+local colors = {
+  primary = "#a6e3a1",
+  secondary = "#f5c2e7"
+}
+
 --- HCalendar.showProgress (Boolean)
 --- Variable
 --- Control whether or not progress through the month is shown.
@@ -38,15 +43,15 @@ local function updateHcalCanvas()
         obj.canvas[2+i].text = mappedweekdaystr
         obj.canvas[64+i].text = i
         if mappedweekdaystr == "Sa" or mappedweekdaystr == "Su" then
-            obj.canvas[2+i].textColor = {hex="#FF7878"}
-            obj.canvas[33+i].fillColor = {hex="#FF7878"}
-            obj.canvas[64+i].textColor = {hex="#FF7878"}
+            obj.canvas[2+i].textColor = {hex=colors.primary}
+            obj.canvas[33+i].fillColor = {hex=colors.primary}
+            obj.canvas[64+i].textColor = {hex=colors.primary}
         end
         if obj.showProgress and i < math.tointeger(currentday) then
-            obj.canvas[33+i].fillColor = {hex="#00BAFF", alpha=0.8}
+            obj.canvas[33+i].fillColor = {hex=colors.secondary}
             obj.canvas[96].frame.x = tostring((10+24*(i-1))/obj.hcalw)
         elseif i == math.tointeger(currentday) then
-            obj.canvas[33+i].fillColor = {hex="#00BAFF", alpha=0.8}
+            obj.canvas[33+i].fillColor = {hex=colors.secondary}
             obj.canvas[96].frame.x = tostring((10+24*(i-1))/obj.hcalw)
             if obj.showProgress then
                 local currentHour = os.date('%H')
@@ -62,7 +67,7 @@ local function updateHcalCanvas()
                 obj.canvas[97].frame.x = tostring(obj.canvas[33+i].frame.w + obj.canvas[33+i].frame.x)
                 obj.canvas[97].frame.w = tostring((24-currentHour)/(obj.hcalw-20))
                 if mappedweekdaystr == "Sa" or mappedweekdaystr == "Su" then
-                    obj.canvas[97].fillColor = {hex="#FF7878"}
+                    obj.canvas[97].fillColor = {hex=colors.primary}
                 end
             end
 --        else
