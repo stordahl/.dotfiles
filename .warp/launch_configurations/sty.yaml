@@ -25,10 +25,14 @@
 name: Sty
 windows:
   - tabs:
-      - layout:
-          split_direction: horizontal
-          panes:
-            - cwd: /Users/stordahl/code/stylitics/apps
-            - cwd: /Users/stordahl/code/stylitics/apps
-              commands:
-                - exec: dash
+    - title: Good Morning!
+      layout:
+          cwd: /Users/stordahl
+          commands:
+              - exec: weather
+    - title: PRs
+      layout:
+          cwd: /Users/stordahl/code/stylitics/apps
+          commands:
+              - exec: dash
+
