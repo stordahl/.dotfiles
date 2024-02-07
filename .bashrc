@@ -167,3 +167,6 @@ esac
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
+
+# supress macos warning about zsh
+export BASH_SILENCE_DEPRECATION_WARNING=1
