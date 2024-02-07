@@ -13,7 +13,7 @@ stow .
 cd ../
 
 # Install Brew Packages
-
+brew install fzf ripgrep nvim gh
 
 # Setup TPM
 mkdir -p ~/.tmux/plugins/tpm
