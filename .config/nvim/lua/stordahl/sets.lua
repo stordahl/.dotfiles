@@ -21,3 +21,6 @@ vim.wo.number = true
 
 --Term GUI Colors
 vim.o.termguicolors = true
+
+-- Use System Clipboard
+vim.o.clipboard = "unnamedplus"
