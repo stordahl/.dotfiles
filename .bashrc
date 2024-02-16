@@ -5,8 +5,10 @@ fi
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   source ~/.bash_linux
+  source ~/.bash_linux_private
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   source ~/.bash_macos
+  source ~/.bash_macos_private
 fi
 
 # ALIASES

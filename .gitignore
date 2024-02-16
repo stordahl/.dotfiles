@@ -2,3 +2,5 @@
 
 .DS_Store
 
+.bash_macos_private
+.bash_linux_private
