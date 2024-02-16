@@ -66,6 +66,9 @@ require'lspconfig'.html.setup{ capabilities = capabilities }
 -- CSS
 require'lspconfig'.cssls.setup { capabilities = capabilities }
 
+-- Biome
+require'lspconfig'.biome.setup{}
+
 -- Javascript
 require'lspconfig'.eslint.setup{
   on_attach = on_attach,

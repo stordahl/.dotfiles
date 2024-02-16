@@ -1,4 +1,5 @@
 .config/gh
+.config/.wrangler
 
 .DS_Store
 
