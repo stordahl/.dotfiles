@@ -93,3 +93,4 @@ require'lspconfig'.astro.setup{}
 -- Tailwind
 require'lspconfig'.tailwindcss.setup{}
 
+require'lspconfig'.gleam.setup{}

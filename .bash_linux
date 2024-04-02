@@ -117,5 +117,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+  
+export DENO_INSTALL="/home/stordahl/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

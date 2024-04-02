@@ -15,9 +15,10 @@ local config = {}
 
 config.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
 
+config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
+
 config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
-
 
 config.window_frame = {
   font = wezterm.font { family = 'GeistMono Nerd Font' },
