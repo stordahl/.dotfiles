@@ -5,8 +5,10 @@ fi
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   source ~/.bash_linux
+  source ~/.bash_linux_private
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   source ~/.bash_macos
+  source ~/.bash_macos_private
 fi
 
 # ALIASES
@@ -37,6 +39,7 @@ alias gsync="gsw $(git remote show origin | sed -n '/HEAD branch/s/.*: //p') && 
 alias yank="git pull"
 alias yeet="git push"
 alias yeet-hard="git push --force-with-lease"
+alias lg="lazygit"
 
 # Utils
 # Use bat instead of cat

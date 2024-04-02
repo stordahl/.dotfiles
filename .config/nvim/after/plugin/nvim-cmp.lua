@@ -8,9 +8,10 @@ local luasnip = require("luasnip")
 local cmp = require("cmp")
 
 cmp.setup({
-
-  -- ... Your other configuration ...
-
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
   mapping = {
 
     -- ... Your other mappings ...
@@ -38,10 +39,6 @@ cmp.setup({
     end, { "i", "s" }),
 
     ['<cr>'] = cmp.mapping.confirm(),
-
-    -- ... Your other mappings ...
   },
-
-  -- ... Your other configuration ...
 })
 

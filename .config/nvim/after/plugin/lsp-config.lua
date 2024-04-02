@@ -3,6 +3,32 @@ local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
+-- Specify how the border looks like
+local border = {
+    { '┌', 'FloatBorder' },
+    { '─', 'FloatBorder' },
+    { '┐', 'FloatBorder' },
+    { '│', 'FloatBorder' },
+    { '┘', 'FloatBorder' },
+    { '─', 'FloatBorder' },
+    { '└', 'FloatBorder' },
+    { '│', 'FloatBorder' },
+}
+
+-- Add the border on hover and on signature help popup window
+local handlers = {
+    ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+    ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+}
+
+-- Add border to the diagnostic popup window
+vim.diagnostic.config({
+    virtual_text = {
+        prefix = '■ ', -- Could be '●', '▎', 'x', '■', , 
+    },
+    float = { border = border },
+})
+
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
@@ -21,6 +47,7 @@ end
 -- SETUPS
 -- Sumneko Lua
 require'lspconfig'.lua_ls.setup{
+  handlers = handlers,
   on_attach = on_attach,
   settings = {
     Lua = {
@@ -58,39 +85,50 @@ vim.api.nvim_create_autocmd('FileType', {
 
 
 -- Emmet
-require'lspconfig'.emmet_ls.setup{}
+require'lspconfig'.emmet_ls.setup{ handlers = handlers }
 
 -- HTML
-require'lspconfig'.html.setup{ capabilities = capabilities }
+require'lspconfig'.html.setup{
+  capabilities = capabilities,
+  handlers = handlers
+}
 
 -- CSS
-require'lspconfig'.cssls.setup { capabilities = capabilities }
+require'lspconfig'.cssls.setup {
+  capabilities = capabilities,
+  handlers = handlers
+}
 
 -- Biome
-require'lspconfig'.biome.setup{}
+require'lspconfig'.biome.setup{ handlers = handlers }
 
 -- Javascript
 require'lspconfig'.eslint.setup{
+  handlers = handlers,
   on_attach = on_attach,
   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx", "vue", "svelte", "astro" },
 }
 
 --TypeScript
 require'lspconfig'.tsserver.setup{
+  handlers = handlers,
   on_attach = on_attach,
   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
 }
 
 -- Svelte
-require'lspconfig'.svelte.setup{ on_attach = on_attach }
+require'lspconfig'.svelte.setup{
+  handlers = handlers,
+  on_attach = on_attach 
+}
 
 -- Vue
-require'lspconfig'.vuels.setup{}
+require'lspconfig'.vuels.setup{ handlers = handlers }
 
 --Astro
-require'lspconfig'.astro.setup{}
+require'lspconfig'.astro.setup{ handlers = handlers }
 
 -- Tailwind
-require'lspconfig'.tailwindcss.setup{}
+require'lspconfig'.tailwindcss.setup{ handlers = handlers }
 
 require'lspconfig'.gleam.setup{}
