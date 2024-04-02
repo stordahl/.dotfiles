@@ -1,4 +1,8 @@
+.config/astro
+.config/btop
+.config/lazygit/state.yml
 .config/gh
+.config/payload-nodejs
 .config/.wrangler
 
 .DS_Store
