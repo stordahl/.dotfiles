@@ -15,7 +15,7 @@ fi
 # Vim 
 alias vim="nvim"
 alias vi="nvim"
-alias v="nvim ."
+alias v="ff" # changing this to ff to help break my file tree habit
 
 #Tmux
 alias t="bash ~/.scripts/tmux_switch_interactive.sh"
