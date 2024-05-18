@@ -1,4 +1,3 @@
-local notify = require("notify")
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
@@ -34,7 +33,6 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local on_attach = function(client)
   vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, { buffer = 0 })
-  notify(string.format("[lsp] %s\n[cwd] %s", client.name, vim.fn.getcwd()), "info", { title = "[lsp] Active" }, true)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 });
   vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { buffer = 0 });
   vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, { buffer = 0 });
@@ -79,7 +77,6 @@ vim.api.nvim_create_autocmd('FileType', {
       name = 'bash-language-server',
       cmd = { 'bash-language-server', 'start' },
     })
-    notify("Starting Bash LSP")
   end,
 })
 

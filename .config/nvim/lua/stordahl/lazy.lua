@@ -75,7 +75,18 @@ require("lazy").setup({
       vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", {})
     end
   },
-  "rcarriga/nvim-notify",
+  {
+    "f-person/auto-dark-mode.nvim",
+    config = {
+      update_interval = 500,
+      set_dark_mode = function()
+        vim.api.nvim_set_option("background", "dark")
+      end,
+      set_light_mode = function()
+        vim.api.nvim_set_option("background", "light")
+      end,
+    },
+  },
   "nvim-lualine/lualine.nvim",
   "windwp/nvim-autopairs",
   "lewis6991/gitsigns.nvim",
