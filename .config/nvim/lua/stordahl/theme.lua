@@ -7,9 +7,7 @@ require("catppuccin").setup({
     integrations = {
         cmp = true,
         gitsigns = true,
-        neotree = true,
         treesitter = true,
-        notify = true,
     },
 })
 

@@ -80,10 +80,14 @@ require("lazy").setup({
     config = {
       update_interval = 500,
       set_dark_mode = function()
-        vim.api.nvim_set_option("background", "dark")
+        if vim.loop.os_uname().sysname == "Darwin" then
+          vim.api.nvim_set_option("background", "dark")
+        end
       end,
       set_light_mode = function()
-        vim.api.nvim_set_option("background", "light")
+        if vim.loop.os_uname().sysname == "Darwin" then
+          vim.api.nvim_set_option("background", "light")
+        end
       end,
     },
   },
