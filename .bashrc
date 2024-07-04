@@ -41,6 +41,8 @@ alias yeet-hard="git push --force-with-lease"
 alias lg="lazygit"
 
 # Utils
+alias ..="cd ../"
+alias ...="cd ../.."
 # Use bat instead of cat
 alias cat="bat"
 # Search with fzf and open in nvim
