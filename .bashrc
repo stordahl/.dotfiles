@@ -35,7 +35,6 @@ alias gb="git for-each-ref --sort=committerdate refs/heads/ --format='%(committe
 alias gd="git diff"
 alias gaa="git add ."
 alias gr="git restore ."
-alias gsync="gsw $(git remote show origin | sed -n '/HEAD branch/s/.*: //p') && yank"
 alias yank="git pull"
 alias yeet="git push"
 alias yeet-hard="git push --force-with-lease"
@@ -65,5 +64,3 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-neofetch
