@@ -69,6 +69,10 @@ require'lspconfig'.lua_ls.setup{
   },
 }
 
+require'lspconfig'.rust_analyzer.setup({
+    on_attach = on_attach
+})
+
 -- bash
 vim.api.nvim_create_autocmd('FileType', {
   pattern = "sh",
@@ -113,10 +117,16 @@ require'lspconfig'.tsserver.setup{
   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
 }
 
+-- Deno
+--require'lspconfig'.denols.setup{
+  --handlers = handlers,
+  --on_attach = on_attach,
+--}
+
 -- Svelte
 require'lspconfig'.svelte.setup{
   handlers = handlers,
-  on_attach = on_attach 
+  on_attach = on_attach
 }
 
 -- Vue

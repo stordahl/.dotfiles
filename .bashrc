@@ -11,11 +11,13 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   source ~/.bash_macos_private
 fi
 
+# vim mode
+set -o vi
+
 # ALIASES
 # Vim 
 alias vim="nvim"
-alias vi="nvim"
-alias v="nvim +Oil" 
+alias v="nvim -c \"Telescope find_files\"" 
 
 #Tmux
 alias t="bash ~/.scripts/tmux_switch_interactive.sh"
@@ -66,3 +68,6 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+export VOLTA_FEATURE_PNPM="1"
