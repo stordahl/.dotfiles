@@ -17,7 +17,7 @@ set -o vi
 # ALIASES
 # Vim 
 alias vim="nvim"
-alias v="nvim -c \"Telescope find_files\"" 
+alias v="nvim" 
 
 #Tmux
 alias t="bash ~/.scripts/tmux_switch_interactive.sh"
