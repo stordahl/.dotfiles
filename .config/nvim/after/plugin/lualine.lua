@@ -1,4 +1,4 @@
 require('lualine').setup {
-  options = { theme = 'catppuccin' }
+  options = { theme = 'palenight' }
 }
 

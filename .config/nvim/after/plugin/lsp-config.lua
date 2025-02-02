@@ -73,6 +73,10 @@ require'lspconfig'.rust_analyzer.setup({
     on_attach = on_attach
 })
 
+require'lspconfig'.gopls.setup({
+  on_attach = on_attach
+})
+
 -- bash
 vim.api.nvim_create_autocmd('FileType', {
   pattern = "sh",
@@ -111,7 +115,7 @@ require'lspconfig'.eslint.setup{
 }
 
 --TypeScript
-require'lspconfig'.tsserver.setup{
+require'lspconfig'.ts_ls.setup{
   handlers = handlers,
   on_attach = on_attach,
   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },

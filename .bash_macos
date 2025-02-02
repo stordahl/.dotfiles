@@ -1,2 +1,5 @@
 #!/bin/bash
+export PATH="/Users/stordahl/.local/bin:$PATH"
+export GO_HOME="$HOME/go"
+export PATH="$GO_HOME/bin:$PATH"
 

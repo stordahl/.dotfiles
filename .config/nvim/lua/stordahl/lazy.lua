@@ -1,4 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
@@ -34,7 +35,12 @@ require("lazy").setup({
       },
     },
   },
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
   {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.5",
@@ -91,10 +97,30 @@ require("lazy").setup({
         keymaps = {
           ["g?"] = "actions.show_help",
           ["<CR>"] = "actions.select",
+        },
+        float = {
+          -- Padding around the floating window
+          padding = 2,
+          max_width = 100,
+          max_height = 0,
+          border = "rounded",
+          win_options = {
+            winblend = 0,
+          },
+          -- optionally override the oil buffers window title with custom function: fun(winid: integer): string
+          get_win_title = nil,
+          -- preview_split: Split direction: "auto", "left", "right", "above", "below".
+          preview_split = "auto",
+          -- This is the config that will be passed to nvim_open_win.
+          -- Change values here to customize the layout
+          override = function(conf)
+            return conf
+          end,
         }
       }
 
-      vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", {})
+      --vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", {})
+      vim.keymap.set("n", "<leader>e", "<cmd>lua require('oil').toggle_float()<cr>", { noremap = true })
     end
   },
   {
@@ -153,14 +179,5 @@ require("lazy").setup({
       desc = "Quickfix List (Trouble)",
     },
   },
-},
-{
-  "lervag/vimtex",
-  lazy = false,     -- we don't want to lazy load VimTeX
-  -- tag = "v2.15", -- uncomment to pin to a specific release
-  init = function()
-    -- VimTeX configuration goes here, e.g.
-    vim.g.vimtex_view_method = "zathura"
-  end
 }
 })

@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [ -n "$TMUX" ]; then
+  echo "Already attached to session"
+  exit 1
+fi
+
 # If session name is provided as argument, attach directly
 if [ -n "$1" ]; then
     tmux attach -t "$@"

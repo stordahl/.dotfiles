@@ -11,6 +11,12 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   source ~/.bash_macos_private
 fi
 
+# completion
+# [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+
 # vim mode
 set -o vi
 
@@ -43,6 +49,7 @@ alias yeet-hard="git push --force-with-lease"
 alias lg="lazygit"
 
 # Utils
+alias ss="~/.scripts/search_history.sh"
 alias ..="cd ../"
 alias ...="cd ../.."
 # Use bat instead of cat
@@ -71,3 +78,5 @@ export NVM_DIR="$HOME/.nvm"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 export VOLTA_FEATURE_PNPM="1"
+. "$HOME/.cargo/env"
+. "/Users/stordahl/.deno/env"
