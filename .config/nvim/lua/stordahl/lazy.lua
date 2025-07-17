@@ -18,7 +18,11 @@ require("lazy").setup({
     event = "VeryLazy",
     build = "make", -- This is Optional, only if you want to use tiktoken_core to calculate tokens count
     opts = {
-      -- add any opts here
+      providers = {
+        claude = {
+          model = "claude-sonnet-4-20250514",
+        }
+      }
     },
     dependencies = {
       "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
@@ -34,6 +38,26 @@ require("lazy").setup({
         ft = { "markdown", "Avante" },
       },
     },
+  },
+  {
+    "kdheepak/lazygit.nvim",
+    lazy = true,
+    cmd = {
+        "LazyGit",
+        "LazyGitConfig",
+        "LazyGitCurrentFile",
+        "LazyGitFilter",
+        "LazyGitFilterCurrentFile",
+    },
+    -- optional for floating window border decoration
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+    },
+    -- setting the keybinding for LazyGit with 'keys' is recommended in
+    -- order to load the plugin when the command is run for the first time
+    keys = {
+        { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+    }
   },
   {
     "folke/tokyonight.nvim",
@@ -81,6 +105,10 @@ require("lazy").setup({
   },
   "saadparwaiz1/cmp_luasnip",
   "hrsh7th/cmp-nvim-lsp",
+  {
+    "nvim-svelte/nvim-svelte-snippets",
+    dependencies = "L3MON4D3/LuaSnip",
+  },
   {
     'stevearc/oil.nvim',
     opts = {},

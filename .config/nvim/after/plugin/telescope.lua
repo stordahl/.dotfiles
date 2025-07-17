@@ -16,6 +16,8 @@ vim.api.nvim_set_keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin'
 
 vim.api.nvim_set_keymap("n", "<leader>gs", "<cmd>lua require('telescope.builtin').git_status()<cr>", defaultOpts)
 
+vim.api.nvim_set_keymap("n", "<leader>dd", "<cmd>lua require('telescope.builtin').diagnostics()<cr>", defaultOpts)
+
 vim.keymap.set("n", "<leader>g", function ()
   builtin.grep_string({ search = vim.fn.input("grep :")})
 end, utils.merge(defaultOpts, { desc = "string grep"}))

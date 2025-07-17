@@ -1,3 +1,4 @@
+local lsp = require'lspconfig'
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
@@ -31,6 +32,9 @@ vim.diagnostic.config({
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
+updated_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+
 local on_attach = function(client)
   vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, { buffer = 0 })
   vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 });
@@ -44,7 +48,7 @@ end
 
 -- SETUPS
 -- Sumneko Lua
-require'lspconfig'.lua_ls.setup{
+lsp.lua_ls.setup{
   handlers = handlers,
   on_attach = on_attach,
   settings = {
@@ -69,11 +73,11 @@ require'lspconfig'.lua_ls.setup{
   },
 }
 
-require'lspconfig'.rust_analyzer.setup({
+lsp.rust_analyzer.setup({
     on_attach = on_attach
 })
 
-require'lspconfig'.gopls.setup({
+lsp.gopls.setup({
   on_attach = on_attach
 })
 
@@ -90,56 +94,64 @@ vim.api.nvim_create_autocmd('FileType', {
 
 
 -- Emmet
-require'lspconfig'.emmet_ls.setup{ handlers = handlers }
+lsp.emmet_ls.setup{ handlers = handlers }
 
 -- HTML
-require'lspconfig'.html.setup{
+lsp.html.setup{
   capabilities = capabilities,
   handlers = handlers
 }
 
 -- CSS
-require'lspconfig'.cssls.setup {
+lsp.cssls.setup {
   capabilities = capabilities,
   handlers = handlers
 }
 
 -- Biome
-require'lspconfig'.biome.setup{ handlers = handlers }
+lsp.biome.setup{ handlers = handlers }
 
 -- Javascript
-require'lspconfig'.eslint.setup{
+lsp.eslint.setup{
   handlers = handlers,
   on_attach = on_attach,
-  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx", "vue", "svelte", "astro" },
 }
 
 --TypeScript
-require'lspconfig'.ts_ls.setup{
+lsp.ts_ls.setup{
   handlers = handlers,
   on_attach = on_attach,
-  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+  single_file_support = false,
+  root_dir = require("lspconfig").util.root_pattern({ "package.json", "tsconfig.json" }),
 }
 
 -- Deno
---require'lspconfig'.denols.setup{
-  --handlers = handlers,
-  --on_attach = on_attach,
---}
+lsp.denols.setup{
+  handlers = handlers,
+  on_attach = on_attach,
+  root_dir = require("lspconfig").util.root_pattern({"deno.json", "deno.jsonc"}),
+}
 
 -- Svelte
-require'lspconfig'.svelte.setup{
+lsp.svelte.setup{
+  handlers = handlers,
+  on_attach = on_attach,
+  cmd = { 'svelteserver', '--stdio' },
+  filetypes = { 'svelte' },
+  settings = {
+    svelte = {
+      ["enable-ts-plugin"] = true,
+    },
+  }
+}
+
+--Astro
+lsp.astro.setup{ handlers = handlers }
+
+-- Tailwind
+lsp.tailwindcss.setup{ handlers = handlers }
+
+lsp.gleam.setup{
   handlers = handlers,
   on_attach = on_attach
 }
-
--- Vue
-require'lspconfig'.vuels.setup{ handlers = handlers }
-
---Astro
-require'lspconfig'.astro.setup{ handlers = handlers }
-
--- Tailwind
-require'lspconfig'.tailwindcss.setup{ handlers = handlers }
-
-require'lspconfig'.gleam.setup{}
